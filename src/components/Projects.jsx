@@ -266,8 +266,8 @@ export default function Projects() {
           <div className={`flex items-center justify-between text-[11px] font-mono z-10 pt-2 border-t ${
             isDark ? 'border-white/5 text-slate-400' : 'border-slate-200 text-slate-500'
           }`}>
-            <span>REST API: /api/emp</span>
-            <span className={isDark ? 'text-amber-400 font-semibold' : 'text-amber-600 font-semibold'}>Axios • React Router</span>
+            <span>Full-Stack REST: /api/emp</span>
+            <span className={isDark ? 'text-amber-400 font-semibold' : 'text-amber-600 font-semibold'}>React • Axios • MySQL</span>
           </div>
         </div>
       );
