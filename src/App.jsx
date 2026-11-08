@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Lenis from 'lenis';
 import { ThemeProvider } from './context/ThemeContext';
 import LoadingScreen from './components/LoadingScreen';
-import LiquidRevealTransition from './components/LiquidRevealTransition';
 import Navbar from './components/Navbar';
 import BackgroundGlow from './components/BackgroundGlow';
 import CustomCursor from './components/CustomCursor';
@@ -18,7 +17,8 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function PortfolioApp() {
-  // Starts short loading counter (1-100%) on every page load or browser refresh
+  // Starts short loading counter (1-100%) on initial visit or refresh
+  // Immediately slides upward once 100% is reached
   const [isLoading, setIsLoading] = useState(() => {
     if (typeof window === 'undefined') return false;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -26,20 +26,10 @@ function PortfolioApp() {
     }
     return true;
   });
-  const [isRevealing, setIsRevealing] = useState(false);
 
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-    setIsRevealing(true);
-  };
-
-  const handleRevealComplete = () => {
-    setIsRevealing(false);
-  };
-
-  // Initialize Lenis smooth scroll
+  // Initialize Lenis smooth scroll once loading screen slides away
   useEffect(() => {
-    if (isLoading) return; // Wait until loader finishes
+    if (isLoading) return; // Wait until upward slide finishes
 
     const lenis = new Lenis({
       duration: 1.1,
@@ -64,14 +54,9 @@ function PortfolioApp() {
 
   return (
     <div className="relative min-h-screen transition-colors duration-500 overflow-x-hidden selection:bg-cyan-500/30 selection:text-white">
-      {/* 1. Minimal Apple-Style Loading Animation (1-100%) */}
+      {/* 1. Loading screen (1% -> 100% -> slides upward smoothly revealing homepage) */}
       {isLoading && (
-        <LoadingScreen onComplete={handleLoadingComplete} />
-      )}
-
-      {/* 2. Apple Liquid Glass Upward Flowing Curtain Transition */}
-      {isRevealing && (
-        <LiquidRevealTransition onComplete={handleRevealComplete} />
+        <LoadingScreen onComplete={() => setIsLoading(false)} />
       )}
 
       {/* Dynamic Background Spotlight & Ambient Lights */}
