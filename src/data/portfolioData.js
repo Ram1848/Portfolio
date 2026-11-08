@@ -194,6 +194,33 @@ export const projects = [
       framework: "Flask & Python ML",
       threatScoring: "Real-time Heuristics"
     }
+  },
+  {
+    id: "employee-management",
+    number: "04",
+    title: "Employee Management System",
+    tagline: "Full-Stack Enterprise Employee Directory & Lifecycle Operations",
+    status: "In Progress",
+    technologies: ["React.js", "Vite", "JavaScript", "Axios", "React Router", "REST APIs", "Bootstrap"],
+    description: "An ongoing project focused on managing employee information and streamlining employee-related management operations.",
+    detailedDescription: "The Employee Management System (EMS) provides a streamlined web application for human resource workflows and staff records management. Built with React and Vite, the platform features dynamic employee listing, client-side routing, add/update lifecycle workflows, and asynchronous RESTful service layers using Axios communicating with enterprise API endpoints.",
+    features: [
+      "Dynamic employee directory with responsive data tables and status tracking",
+      "Comprehensive CRUD operations: create, update, retrieve, and delete employee records",
+      "Client-side routing with React Router for seamless single-page navigation",
+      "Dedicated asynchronous service architecture using Axios for REST API communication",
+      "Modular UI components with Bootstrap layout utilities and form validations"
+    ],
+    architecture: "React 18 frontend structured with modular components (ListEmployee, EmployeeForm, Header) and service layer (EmployeeService) executing Axios HTTP calls to REST backend endpoints.",
+    github: "https://github.com/Ram1848/employee",
+    demo: null,
+    accentColor: "from-amber-500/20 via-cyan-500/10 to-transparent",
+    badge: "Full-Stack Web App",
+    stats: {
+      framework: "React 18 + Vite",
+      routing: "React Router v6",
+      apiLayer: "Axios REST Client"
+    }
   }
 ];
 

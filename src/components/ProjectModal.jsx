@@ -52,6 +52,12 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               }`}>
                 <span>PROJECT // {project.number}</span>
                 <span>•</span>
+                {project.status === 'In Progress' && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center gap-1 shadow-[0_0_8px_rgba(245,158,11,0.2)]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                    <span>IN PROGRESS</span>
+                  </span>
+                )}
                 <span className={`px-2 py-0.5 rounded-full border ${
                   isDark ? 'bg-cyan-500/10 border-cyan-500/20 text-cyan-300' : 'bg-blue-50 border-blue-200 text-blue-700'
                 }`}>
@@ -246,19 +252,21 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                 <span>GitHub Repo</span>
               </a>
 
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold flex items-center gap-2 transition-all shadow-md ${
-                  isDark 
-                    ? 'bg-cyan-500 text-dark-950 hover:bg-cyan-400 shadow-cyan-500/20' 
-                    : 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-600/20'
-                }`}
-              >
-                <span>Live Demo</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold flex items-center gap-2 transition-all shadow-md ${
+                    isDark 
+                      ? 'bg-cyan-500 text-dark-950 hover:bg-cyan-400 shadow-cyan-500/20' 
+                      : 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-600/20'
+                  }`}
+                >
+                  <span>Live Demo</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              )}
             </div>
           </div>
         </motion.div>

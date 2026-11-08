@@ -6,6 +6,7 @@ import {
   Mic, 
   Navigation, 
   ShieldAlert, 
+  Users,
   ArrowUpRight, 
   Maximize2
 } from 'lucide-react';
@@ -206,6 +207,71 @@ export default function Projects() {
         </div>
       </div>
     );
+
+    if (project.id === 'employee-management') {
+      return (
+        <div className={`relative w-full h-56 sm:h-64 rounded-2xl border p-5 flex flex-col justify-between overflow-hidden transition-colors ${
+          isDark 
+            ? 'bg-gradient-to-br from-dark-950 via-dark-900 to-dark-850 border-white/10 group-hover:border-amber-500/40' 
+            : 'bg-gradient-to-br from-slate-50 via-white to-slate-100 border-slate-200 group-hover:border-amber-400'
+        }`}>
+          <div className="absolute top-0 right-1/4 w-44 h-44 bg-amber-500/10 rounded-full blur-2xl" />
+
+          {/* Top Bar */}
+          <div className="flex items-center justify-between text-xs font-mono z-10">
+            <span className={`flex items-center gap-2 font-semibold ${isDark ? 'text-amber-400' : 'text-amber-600'}`}>
+              <Users className="w-3.5 h-3.5" />
+              EMS DIRECTORY MATRIX
+            </span>
+            <span className="px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-400 text-[10px] font-mono font-semibold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+              <span>IN PROGRESS</span>
+            </span>
+          </div>
+
+          {/* Table Preview */}
+          <div className={`my-auto p-3.5 rounded-xl border space-y-2 z-10 ${
+            isDark ? 'bg-dark-950/80 border-white/10' : 'bg-white border-slate-200 shadow-sm'
+          }`}>
+            <div className={`grid grid-cols-12 gap-1 text-[10px] font-mono pb-1 border-b ${
+              isDark ? 'border-white/10 text-slate-500' : 'border-slate-200 text-slate-400 font-semibold'
+            }`}>
+              <span className="col-span-2">ID</span>
+              <span className="col-span-4">EMPLOYEE</span>
+              <span className="col-span-4">EMAIL</span>
+              <span className="col-span-2 text-right">ACTION</span>
+            </div>
+
+            <div className="space-y-1.5 font-mono text-[11px]">
+              <div className="grid grid-cols-12 gap-1 items-center">
+                <span className={`col-span-2 text-[10px] ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>#101</span>
+                <span className={`col-span-4 font-medium truncate ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>Ram Lokesh</span>
+                <span className={`col-span-4 text-[10px] truncate ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>ram@corp.io</span>
+                <span className="col-span-2 text-right">
+                  <span className="px-1.5 py-0.5 rounded text-[9px] bg-cyan-500/10 text-cyan-400 font-semibold border border-cyan-500/20">EDIT</span>
+                </span>
+              </div>
+              <div className="grid grid-cols-12 gap-1 items-center">
+                <span className={`col-span-2 text-[10px] ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>#102</span>
+                <span className={`col-span-4 font-medium truncate ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>S. Sharma</span>
+                <span className={`col-span-4 text-[10px] truncate ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>sharma@corp.io</span>
+                <span className="col-span-2 text-right">
+                  <span className="px-1.5 py-0.5 rounded text-[9px] bg-cyan-500/10 text-cyan-400 font-semibold border border-cyan-500/20">EDIT</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className={`flex items-center justify-between text-[11px] font-mono z-10 pt-2 border-t ${
+            isDark ? 'border-white/5 text-slate-400' : 'border-slate-200 text-slate-500'
+          }`}>
+            <span>REST API: /api/emp</span>
+            <span className={isDark ? 'text-amber-400 font-semibold' : 'text-amber-600 font-semibold'}>Axios • React Router</span>
+          </div>
+        </div>
+      );
+    }
   };
 
   return (
@@ -230,8 +296,8 @@ export default function Projects() {
         </p>
       </div>
 
-      {/* Projects Grid: Exactly 3 Premium Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Projects Grid: 4 Responsive Premium Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
@@ -250,11 +316,19 @@ export default function Projects() {
                 <span className={`font-bold tracking-wider ${isDark ? 'text-cyan-400' : 'text-blue-600'}`}>
                   // PROJECT {project.number}
                 </span>
-                <span className={`px-2.5 py-1 rounded-full text-[11px] border ${
-                  isDark ? 'bg-white/5 border-white/10 text-slate-300' : 'bg-slate-100 border-slate-200 text-slate-700'
-                }`}>
-                  {project.badge}
-                </span>
+                <div className="flex items-center gap-2">
+                  {project.status === 'In Progress' && (
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center gap-1.5 shadow-[0_0_8px_rgba(245,158,11,0.2)]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                      <span>IN PROGRESS</span>
+                    </span>
+                  )}
+                  <span className={`px-2.5 py-1 rounded-full text-[11px] border ${
+                    isDark ? 'bg-white/5 border-white/10 text-slate-300' : 'bg-slate-100 border-slate-200 text-slate-700'
+                  }`}>
+                    {project.badge}
+                  </span>
+                </div>
               </div>
 
               {/* Bespoke UI Mockup Visual */}
@@ -328,20 +402,22 @@ export default function Projects() {
                   <span>GitHub</span>
                 </a>
 
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`px-3.5 py-1.5 rounded-xl font-semibold text-xs flex items-center gap-1.5 transition-all duration-200 shadow-md ${
-                    isDark 
-                      ? 'bg-white text-dark-950 hover:bg-slate-200 shadow-white/5' 
-                      : 'bg-slate-900 text-white hover:bg-slate-800 shadow-slate-900/10'
-                  }`}
-                  title={`${project.title} Live Demo`}
-                >
-                  <span>Live Demo</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`px-3.5 py-1.5 rounded-xl font-semibold text-xs flex items-center gap-1.5 transition-all duration-200 shadow-md ${
+                      isDark 
+                        ? 'bg-white text-dark-950 hover:bg-slate-200 shadow-white/5' 
+                        : 'bg-slate-900 text-white hover:bg-slate-800 shadow-slate-900/10'
+                    }`}
+                    title={`${project.title} Live Demo`}
+                  >
+                    <span>Live Demo</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>
