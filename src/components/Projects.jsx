@@ -299,13 +299,13 @@ export default function Projects() {
             </div>
 
             {/* Actions Footer */}
-            <div className={`pt-4 border-t flex items-center justify-between gap-3 ${
+            <div className={`pt-4 border-t flex flex-wrap items-center justify-between gap-2.5 ${
               isDark ? 'border-white/5' : 'border-slate-200'
             }`}>
               <button
                 onClick={() => handleOpenModal(project)}
-                className={`inline-flex items-center gap-1.5 text-xs font-mono transition-colors ${
-                  isDark ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900 font-semibold'
+                className={`inline-flex items-center gap-1.5 text-xs font-mono transition-colors py-1.5 ${
+                  isDark ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-slate-900 font-semibold'
                 }`}
               >
                 <Maximize2 className={`w-3.5 h-3.5 ${isDark ? 'text-cyan-400' : 'text-blue-600'}`} />
@@ -316,30 +316,31 @@ export default function Projects() {
                 <a
                   href={project.github}
                   target="_blank"
-                  rel="noreferrer"
-                  className={`p-2 rounded-xl border transition-colors ${
+                  rel="noopener noreferrer"
+                  className={`px-3 py-1.5 rounded-xl text-xs font-mono border flex items-center gap-1.5 transition-all duration-200 ${
                     isDark 
-                      ? 'bg-white/5 border-white/10 hover:border-white/20 text-slate-300 hover:text-white' 
-                      : 'bg-white border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-950 shadow-sm'
+                      ? 'bg-white/5 border-white/10 hover:border-cyan-400/50 hover:bg-white/10 text-slate-300 hover:text-white' 
+                      : 'bg-white border-slate-200 hover:border-blue-500/50 hover:bg-slate-50 text-slate-700 hover:text-slate-950 shadow-sm'
                   }`}
-                  title="GitHub Repository"
+                  title={`${project.title} GitHub Repository`}
                 >
-                  <Github className="w-4 h-4" />
+                  <Github className="w-3.5 h-3.5" />
+                  <span>GitHub</span>
                 </a>
 
                 <a
                   href={project.demo}
                   target="_blank"
-                  rel="noreferrer"
-                  className={`px-3.5 py-1.5 rounded-xl font-semibold text-xs flex items-center gap-1 transition-all shadow-md ${
+                  rel="noopener noreferrer"
+                  className={`px-3.5 py-1.5 rounded-xl font-semibold text-xs flex items-center gap-1.5 transition-all duration-200 shadow-md ${
                     isDark 
-                      ? 'bg-white text-dark-950 hover:bg-slate-200' 
-                      : 'bg-slate-900 text-white hover:bg-slate-800'
+                      ? 'bg-white text-dark-950 hover:bg-slate-200 shadow-white/5' 
+                      : 'bg-slate-900 text-white hover:bg-slate-800 shadow-slate-900/10'
                   }`}
-                  title="Live Demo"
+                  title={`${project.title} Live Demo`}
                 >
                   <span>Live Demo</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
             </div>

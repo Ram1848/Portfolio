@@ -235,7 +235,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               <a
                 href={project.github}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className={`px-4 py-2 rounded-xl text-xs font-mono border flex items-center gap-2 transition-colors ${
                   isDark 
                     ? 'bg-white/5 border-white/10 hover:border-white/20 text-slate-200 hover:text-white' 
@@ -249,7 +249,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               <a
                 href={project.demo}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold flex items-center gap-2 transition-all shadow-md ${
                   isDark 
                     ? 'bg-cyan-500 text-dark-950 hover:bg-cyan-400 shadow-cyan-500/20' 

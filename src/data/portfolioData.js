@@ -133,8 +133,8 @@ export const projects = [
       "Secure relational ledger persistence with MySQL and transaction logging"
     ],
     architecture: "React.js client connects through secure RESTful endpoints to a Node.js backend integrating specialized speech-to-text NLP parsers and MySQL transactional databases.",
-    github: "https://github.com",
-    demo: "https://demo.example.com",
+    github: "https://github.com/Ram1848/People_Voice",
+    demo: "https://frontend-delta-mocha-nx53nc3jof.vercel.app/",
     accentColor: "from-blue-600/20 via-cyan-500/10 to-transparent",
     badge: "AI & Voice Tech",
     stats: {
@@ -159,8 +159,8 @@ export const projects = [
       "Clean, scalable RESTful API architecture connecting frontend state with backend services"
     ],
     architecture: "React.js frontend state synced over Socket.IO bidirectional channels with event-driven REST APIs and Google Maps geolocation matrices.",
-    github: "https://github.com",
-    demo: "https://demo.example.com",
+    github: "https://github.com/Ram1848/jurniq",
+    demo: "https://jurniq-sable.vercel.app/",
     accentColor: "from-sky-600/20 via-indigo-500/10 to-transparent",
     badge: "Full-Stack & Realtime",
     stats: {
